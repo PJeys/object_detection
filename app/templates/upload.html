@@ -12,60 +12,24 @@
         <img src="{{ url_for('static', filename='loading.gif') }}" alt="Processing Animation">
         <p>Processing...</p>
     </div>
-
-    <form id="detection-form" style="display: none;">
+    <div id="detection-results">
+        {% if results %}
         <h3>Detection Results</h3>
-        <ul id="detection-results">
-            {% if results %}
+        <ul>
             {% for result in results %}
             <li>{{ result }}</li>
             {% endfor %}
-            {% endif %}
         </ul>
-    </form>
-
+        {% endif %}
+    </div>
     <script>
         const uploadForm = document.getElementById('upload-form');
         const uploadButton = document.getElementById('upload-button');
         const processingAnimation = document.getElementById('processing-animation');
-        const detectionForm = document.getElementById('detection-form');
 
-        uploadForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
+        uploadForm.addEventListener('submit', () => {
             uploadButton.style.display = 'none';
             processingAnimation.style.display = 'block';
-
-            const formData = new FormData(uploadForm);
-            const response = await fetch(uploadForm.action, {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (response.ok) {
-                const results = await response.json();
-                renderResults(results);
-            } else {
-                alert('An error occurred during processing.');
-            }
-
-            processingAnimation.style.display = 'none';
-            detectionForm.style.display = 'block';
         });
-
-        function renderResults(results) {
-            const detectionResults = document.getElementById('detection-results');
-            detectionResults.innerHTML = '';
-            if (results.length > 0) {
-                for (const result of results) {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${result.class}: ${result.score}`;
-                    detectionResults.appendChild(listItem);
-                }
-            } else {
-                const noResultsItem = document.createElement('li');
-                noResultsItem.textContent = 'No objects detected.';
-                detectionResults.appendChild(noResultsItem);
-            }
-        }
     </script>
 {% endblock %}

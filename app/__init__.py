@@ -1,5 +1,5 @@
 from flask import Flask
-from app.controllers.video_controller import video_blueprint
+from app.views.object_detector_view import video_blueprint
 
 
 def create_app():

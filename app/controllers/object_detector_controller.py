@@ -26,20 +26,16 @@ class ObjectDetector:
         if frame is None:
             return None
         instances = self.predictor(frame)
-        serialized_instances = self.serialize_instances([instances])
+        serialized_instances = self.serialize_instance(instances)
         return serialized_instances
 
-    def serialize_instances(self, instances):
-        serialized = []
+    def serialize_instance(self, instance):
         class_names = MetadataCatalog.get(self.predictor.cfg.DATASETS.TRAIN[0]).thing_classes
-        for instance in instances:
-            if len(instance['instances']) > 0:
-                serialized_instance = {
-                    "class": class_names[instance['instances'].pred_classes.tolist()[0]],
-                    "score": instance["instances"].scores.tolist()[0],
-                }
-                serialized.append(serialized_instance)
-        return serialized
+        if len(instance['instances']) > 0:
+            serialized_instance = {
+                class_names[instance['instances'].pred_classes.tolist()[0]]: instance["instances"].scores.tolist()[0],
+            }
+            return serialized_instance
 
     def process_video(self, video_file):
         video_path = save_uploaded_video(video_file)
