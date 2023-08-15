@@ -1,10 +1,10 @@
 from flask import Flask
-from app.views.object_detector_view import video_blueprint
+from app.views import init_app
 
 
 def create_app():
     app = Flask(__name__)
-    app.register_blueprint(video_blueprint, url_prefix='/video')
+    init_app(app)
     app.config.from_object('app.config')
 
     return app
