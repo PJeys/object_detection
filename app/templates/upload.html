@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Video{% endblock %}
+
+{% block content %}
+    <h2>Upload Video for Object Detection</h2>
+    <form id="upload-form" action="{{ url_for('video.detect_objects') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="video" accept=".mp4">
+        <input id="upload-button" type="submit" value="Upload and Detect Objects">
+    </form>
+    <div id="processing-animation" style="display: none;">
+        <img src="{{ url_for('static', filename='loading.gif') }}" alt="Processing Animation">
+        <p>Processing...</p>
+    </div>
+
+    <form id="detection-form" style="display: none;">
+        <h3>Detection Results</h3>
+        <ul id="detection-results">
+            {% if results %}
+            {% for result in results %}
+            <li>{{ result }}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </form>
+
+    <script>
+        const uploadForm = document.getElementById('upload-form');
+        const uploadButton = document.getElementById('upload-button');
+        const processingAnimation = document.getElementById('processing-animation');
+        const detectionForm = document.getElementById('detection-form');
+
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            uploadButton.style.display = 'none';
+            processingAnimation.style.display = 'block';
+
+            const formData = new FormData(uploadForm);
+            const response = await fetch(uploadForm.action, {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const results = await response.json();
+                renderResults(results);
+            } else {
+                alert('An error occurred during processing.');
+            }
+
+            processingAnimation.style.display = 'none';
+            detectionForm.style.display = 'block';
+        });
+
+        function renderResults(results) {
+            const detectionResults = document.getElementById('detection-results');
+            detectionResults.innerHTML = '';
+            if (results.length > 0) {
+                for (const result of results) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${result.class}: ${result.score}`;
+                    detectionResults.appendChild(listItem);
+                }
+            } else {
+                const noResultsItem = document.createElement('li');
+                noResultsItem.textContent = 'No objects detected.';
+                detectionResults.appendChild(noResultsItem);
+            }
+        }
+    </script>
+{% endblock %}

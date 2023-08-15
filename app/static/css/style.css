@@ -1,0 +1,72 @@
+/* Reset some default styles */
+body, h1, h2, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set body font and background color */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+/* Style the main content area */
+main {
+    margin: 2em auto;
+    max-width: 800px;
+    padding: 1em;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the file input */
+input[type="file"] {
+    margin: 1em 0;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    padding: 0.5em 2em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style error messages */
+.error {
+    color: #dc3545;
+    margin-top: 0.5em;
+}
+
+/* style.css */
+#processing-animation {
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+#processing-animation img {
+    width: 50px;
+    height: 50px;
+}
