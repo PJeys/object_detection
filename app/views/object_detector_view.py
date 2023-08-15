@@ -1,7 +1,7 @@
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, request, render_template, jsonify, redirect, url_for
 from app.controllers.object_detector_controller import ObjectDetector
 
-video_blueprint = Blueprint('video', __name__, url_prefix='/video')
+video_blueprint = Blueprint('video', __name__)
 
 
 @video_blueprint.route('/detect_objects', methods=['GET', 'POST'])
@@ -16,3 +16,9 @@ def detect_objects():
         return jsonify(results), 200
 
     return render_template('upload.html')
+
+
+@video_blueprint.route('/', methods=['GET'])
+def index():
+    # This route just for test task, it'll make easier to navigate to needed url
+    return redirect(url_for('video.detect_objects'))
