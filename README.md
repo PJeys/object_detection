@@ -69,3 +69,5 @@ Upload a video file in the web interface.
 The app will process the video and display object detection results.
 
 Results include detected object classes and scores.
+
+To use again, reload page
