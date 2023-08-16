@@ -34,11 +34,11 @@ Run the app using the following command:
 
 Open your web browser and navigate to http://localhost:5000 to use the app.
 
-**Architecture design**
+## Architecture design
 
 You can check diagram in a file named objectDetectionApp.drawio.png
 
-**Usage**
+## Usage
 
 Upload a video file in the web interface.
 
