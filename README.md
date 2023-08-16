@@ -34,7 +34,11 @@ Run the app using the following command:
 
 Open your web browser and navigate to http://localhost:5000 to use the app.
 
-Project Structure
+**Architecture design**
+
+You can check diagram in a file named objectDetectionApp.drawio.png
+
+**Project Structure**
 
 app/: The main application package.
 
@@ -58,7 +62,7 @@ run.py: Script to run the Flask app.
 
 requirements.txt: List of required Python packages.
 
-Usage
+**Usage**
 
 Upload a video file in the web interface.
 
