@@ -13,7 +13,7 @@ This is a Flask-based web application for object detection in videos using the D
 
    ```
    git clone https://github.com/PJeys/object_detection.git
-   cd object-detection
+   cd object_detection
 Install dependencies using anaconda:
 
 
