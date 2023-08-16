@@ -38,30 +38,6 @@ Open your web browser and navigate to http://localhost:5000 to use the app.
 
 You can check diagram in a file named objectDetectionApp.drawio.png
 
-**Project Structure**
-
-app/: The main application package.
-
-controllers/: Contains view controllers and utility functions.
-
-models/: Contains the object detection model and related logic.
-
-static/: Static assets such as CSS and JavaScript files.
-
-templates/: HTML templates for rendering views.
-
-views/: Blueprint for the object detection route.
-
-config.py: Configuration settings.
-
-utils.py: Utility functions.
-
-video_controller.py: Controller for the object detection route.
-
-run.py: Script to run the Flask app.
-
-requirements.txt: List of required Python packages.
-
 **Usage**
 
 Upload a video file in the web interface.
