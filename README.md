@@ -12,12 +12,14 @@ This is a Flask-based web application for object detection in videos using the D
 1. Clone the repository:
 
    ```
-   git clone https://github.com/yourusername/object-detection-web-app.git
-   cd object-detection-web-app
+   git clone https://github.com/PJeys/object_detection.git
+   cd object-detection
 Install dependencies using anaconda:
 
 
 ```conda env create -f environment_droplet.yml ```
+```conda activate object_detection```
+
 
 Install detectron2 package
 

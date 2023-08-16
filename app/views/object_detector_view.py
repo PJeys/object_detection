@@ -12,7 +12,6 @@ def detect_objects():
 
         object_detector = ObjectDetector()
         results = object_detector.process_video(video_file)
-        print(results)
         return jsonify(results), 200
 
     return render_template('upload.html')

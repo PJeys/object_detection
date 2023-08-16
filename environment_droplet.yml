@@ -1,4 +1,4 @@
-name: detectron_test
+name: object_detection
 channels:
   - pytorch
   - defaults
